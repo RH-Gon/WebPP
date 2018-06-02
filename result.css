@@ -1,0 +1,33 @@
+﻿ section#back{
+            flex-flow :row;
+        }
+ article{
+     margin :auto;
+     height : 100%;
+ }
+canvas#PIGraph {
+       width: 100%;
+       flex-flow: row;
+       }
+canvas#BarGraph {
+       margin-left: 10px;
+       width: 100%;
+       flex-flow: row;
+       }
+
+div.button{
+		margin :auto;
+        text-align : center;
+        background-color :lightblue;
+        color :blue;
+        width :50%;
+        min-width :15em;
+        height : 5em;
+       }
+div.button:hover{
+    color : mediumvioletred;
+}
+a{
+    text-decoration :none;
+}
+        

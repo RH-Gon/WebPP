@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html lang="kr"  >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4주 트레이닝</title>
+    <link type="text/css" rel="stylesheet" href="routine1.css" />
+    <script src="resource.js" charset="euc-kr" ></script>
+    <script src="routine1.js"></script>
+    <script src="common.js"></script>
+    <script>
+        if ((parseInt)(sessionStorage.order) == "4") {
+            sessionStorage.order = 0;
+            var arr = new Array();
+            if (!localStorage.total) {
+                localStorage.setItem("total", "0:0:0:0:");
+            }
+            arr = localStorage.total.split(":");
+            arr[localStorage.type] = (parseInt)(arr[localStorage.type]) + 1;
+            localStorage.total = "";
+            for (var i = 0; i < 4; i++) {
+                localStorage.total += arr[i] + ":";
+            }
+            if (!localStorage.duration) {
+                localStorage.duration = 0;
+            }
+            localStorage.duration = (parseInt)(localStorage.duration) + 1;
+            window.location.href = "result.html";
+        }
+        var url = new Array();
+        for (var i = 0; i < sessionStorage.data.length / 11; i++) {
+            url[i] = sessionStorage.data.substr(i * 11, 11);
+        }
+        var details = new Array();
+        details = sessionStorage.detail.split(":");
+    </script>
+</head>
+
+<body onload="init()">
+    <header>
+        <a href="index.html">
+            <img id="logo" src="간판.png" alt="Logo" align="left">
+            <div class="noNewLine" id="title">4주 트레이닝</div>
+        </a>
+    </header>
+    <section id="back">
+        <aside id="pre">
+            <button type="button" id="left" title="이전운동" onclick="Pre()">&lt</button>
+            <img class="sumnail" id="preimg" src="" />
+        </aside>
+        <section class="main">
+            <header id="name"></header>
+            <article>
+                <iframe id="main" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </article>
+            <footer><small id="dificulty"> </small></footer>
+        </section>
+        <aside id="next">
+            <button type="button" id="right" title="다음운동" onclick="Next()">></button>
+            <img class="sumnail" id="nextimg" src="" />
+        </aside>
+    </section>
+    <footer>
+        <small>
+            <br />학교명: 서울과학기술대학교 &nbsp; 만든이:김명성,윤범,오재곤,류해곤 &nbsp; E-mail:maeng9507@daum.net &nbsp; TEL:010-8663-2663 &nbsp; 개인정보보호 책임자: 김명성
+            <br>참고사이트: http://www.naver.com(네이버), https://www.youtube.com(유튜브), http://www.google.com(구글)
+            <br>주소: 서울특별시 노원구 공릉로 232
+            <br>Copyright is Web-programming
+        </small>
+    </footer>
+
+    <script>
+        window.resizeTo(1280, 800); 
+        if ((parseInt)(sessionStorage.getItem("order")) == 0) {
+            document.getElementById("pre").style.visibility = "hidden";
+            document.getElementById("next").style.visibility = "hidden";
+        }
+        else {
+            document.getElementById("pre").style.visibility = "visible";
+            document.getElementById("next").style.visibility = "visible";
+        }
+                        // document.getElementById("main").innerText = preVideo + "<br> " + currentVideo + "<br> " + nextVideo +"<br>" +sessionStorage.order;
+        switch (sessionStorage.order) {
+            case "0"://첫페이지 지정 iframe -> start.html
+                preVideo = "스타트.png";
+                current = "start.html";
+                nextVideo = "https://img.youtube.com/vi/" + url[sessionStorage.order] + "/0.jpg";
+                break;
+            case "1":
+                preVideo = "스타트.png";
+                current = "https://www.youtube.com/embed/" + url[sessionStorage.order - 1];
+                nextVideo = "https://img.youtube.com/vi/" + url[sessionStorage.order] + "/0.jpg";
+                break;
+            case sessionStorage.MAX:
+                preVideo = "https://img.youtube.com/vi/" + url[sessionStorage.order-2] + "/0.jpg";
+                current = "https://www.youtube.com/embed/" + url[sessionStorage.order-1];
+                nextVideo = "간판.png";
+                break;
+            default:
+                preVideo = "https://img.youtube.com/vi/" + url[sessionStorage.order - 2] + "/0.jpg";
+                current = "https://www.youtube.com/embed/" + url[sessionStorage.order - 1];
+                nextVideo = "https://img.youtube.com/vi/" + url[sessionStorage.order] + "/0.jpg";
+                break;
+        }
+        switch (sessionStorage.order){
+            case "0":break;
+            default:
+                document.getElementById("name").innerHTML = details[sessionStorage.order-1];
+                break;
+        }
+        document.getElementById("preimg").src = preVideo;
+        document.getElementById("main").src = current;
+        document.getElementById("nextimg").src = nextVideo;
+    </script>
+</body>
+</html>
