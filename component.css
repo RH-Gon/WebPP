@@ -1,0 +1,121 @@
+/* 이미지들 가운데 정렬 */
+.grid {
+	margin: 40px auto 120px;
+	max-width: 1000px;
+	width: 90%;
+}
+
+/*이미지 크기조정*/
+.grid a {
+	float: left;
+	max-width: 250px;
+	width: 25%;
+	color: #333;
+}
+
+/*이미지 위치조정*/
+.grid a:nth-child(odd) {
+	margin: 30px 0 -30px 0;
+}
+
+/*링크들*/
+.grid figure {
+	position: relative;
+	overflow: hidden;
+	margin: 5px;
+	background: #333;
+}
+
+/*이미지*/
+.grid figure img {
+	position: relative;
+	display: block;
+	width: 100%;
+	opacity: 0.7;
+	-webkit-transition: opacity 0.3s;
+	transition: opacity 0.3s;
+}
+
+/*링크들 제목 부제포함*/
+.grid figcaption {
+	position: absolute;
+	top: 0;
+	z-index: 11;
+	padding: 10px;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+}
+
+/*링크들 제목폰트*/
+.grid figcaption h2 {
+	margin: 0 0 20px 0;
+	color: white;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 300;
+	font-size: 130%;
+	-webkit-transition: -webkit-transform 0.3s;
+	transition: transform 0.3s;
+}
+
+/*링크들 내용 위치지정*/
+.grid figcaption p {
+	padding: 0 20px;
+	color: white;
+	font-weight: 300;
+	-webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+	transition: opacity 0.3s, transform 0.3s;
+}
+
+/*링크들 내용 위치지정*/
+.grid figcaption h2{
+	-webkit-transform: translateY(30px);
+	transform: translateY(30px);
+}
+
+.grid figcaption p {
+	-webkit-transform: translateY(150px);
+	transform: translateY(150px);
+}
+
+/*view 버튼*/
+.grid figure button {
+	position: absolute;
+	padding: 4px 20px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	-webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+	transition: opacity 0.3s, transform 0.3s;
+}
+
+/*부제글씨 사라지기*/
+.grid a:hover figcaption p {
+	opacity: 0;
+}
+
+/* 바탕색 */
+.demo-1 body {
+	background: #3498db;
+}
+
+/*view 상자*/
+.demo-1 .grid figure button,
+.demo-3 .grid figure button {
+	top: 50%;
+	left: 50%;
+	border: 3px solid #fff;
+	background: transparent;
+	color: #fff;
+	opacity: 0;
+	-webkit-transform: translateY(-50%) translateX(-50%) scale(0.25);
+	transform: translateY(-50%) translateX(-50%) scale(0.25);
+}
+
+/*view 상자*/
+.demo-1 .grid a:hover figure button,
+.demo-3 .grid a:hover figure button {
+	opacity: 1;
+	-webkit-transform: translateY(-50%) translateX(-50%) scale(1);
+	transform: translateY(-50%) translateX(-50%) scale(1);
+}
